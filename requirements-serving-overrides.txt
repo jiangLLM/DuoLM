@@ -1,0 +1,5 @@
+# Deliberate, measured overrides to SGLang 0.5.21's upstream metadata.
+# SGLang declares transformers==5.12.1 and tokenizers==0.22.2.
+# The validated DuoLM serving runtime used these newer versions together.
+transformers==5.18.0
+tokenizers==0.23.2

@@ -1,0 +1,35 @@
+cff-version: 1.2.0
+message: "If you use DuoLM, please cite the paper below."
+title: "DuoLM"
+type: software
+authors:
+  - family-names: Wu
+    given-names: Jiang
+  - family-names: Song
+    given-names: Yutong
+  - family-names: Wang
+    given-names: Hongbo
+  - family-names: Cao
+    given-names: Guanghe
+  - family-names: Liang
+    given-names: Jeff Lei
+license: MIT
+repository-code: "https://github.com/jiangLLM/DuoLM"
+preferred-citation:
+  type: article
+  title: "DuoLM: Fast and Effective Personalized Recommendation with Language Models"
+  authors:
+    - family-names: Wu
+      given-names: Jiang
+    - family-names: Song
+      given-names: Yutong
+    - family-names: Wang
+      given-names: Hongbo
+    - family-names: Cao
+      given-names: Guanghe
+    - family-names: Liang
+      given-names: Jeff Lei
+  journal: "arXiv preprint arXiv:2610.24481"
+  year: 2026
+  doi: "10.48550/arXiv.2610.24481"
+  url: "https://arxiv.org/abs/2610.24481"

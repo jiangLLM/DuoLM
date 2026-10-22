@@ -1,0 +1,86 @@
+{
+  "schema_version": "books-candidate-ranking-v1",
+  "model": {
+    "variant": "V3",
+    "b_model": {
+      "repo": "Qwen/Qwen3-0.6B-Base",
+      "revision": "da87bfb608c14b7cf20ba1ce41287e8de496c0cd"
+    },
+    "a_model": {
+      "repo": "Qwen/Qwen3-Embedding-0.6B",
+      "revision": "97b0c614be4d77ee51c0cef4e5f07c00f9eb65b3"
+    },
+    "m": 1,
+    "resampler_layers": 1,
+    "resampler_heads": 8,
+    "a_readout": "perceiver",
+    "shared_candidate_header": true,
+    "score_readout": "candidate",
+    "input_assembly": "batched"
+  },
+  "data": {
+    "train_users": 50000,
+    "dev_users": 5000,
+    "selection_users": 2000,
+    "test_users": 10000,
+    "query_cap": 5,
+    "history_max": 10,
+    "train_candidates": 8,
+    "eval_candidates": 100,
+    "candidate_policy": "random-unobserved",
+    "train_policy": "mixed-history"
+  },
+  "training": {
+    "epochs": 1,
+    "effective_query_batch": 32,
+    "microbatch_queries": 8,
+    "backbone_lr": 1e-05,
+    "head_lr": 0.0001,
+    "betas": [
+      0.9,
+      0.95
+    ],
+    "eps": 1e-08,
+    "weight_decay": 0.01,
+    "warmup_ratio": 0.03,
+    "min_lr_ratio": 0.1,
+    "clip": 1.0,
+    "compute_dtype": "bfloat16",
+    "attention_backend": "flex_attention",
+    "gradient_checkpointing": true,
+    "max_reader_packed_tokens": 65536,
+    "max_encoder_packed_tokens": 32768,
+    "max_logical_tokens": 8192,
+    "interface_lr": 0.0001,
+    "reader_gradient_checkpointing": false,
+    "optimizer_fused": true,
+    "teacher_cache_on_device": true,
+    "pretokenize_items": true,
+    "cuda_event_timing": true
+  },
+  "loss": {
+    "recipe": "ce_kd",
+    "beta_final": 0.5,
+    "beta_warmup_ratio": 0.1,
+    "temperature": 1.0,
+    "alignment_weight": 0.0,
+    "raw_ce_weight": 0.0,
+    "teacher_cache": null,
+    "teacher_identity": null,
+    "teacher_cache_sha256": null
+  },
+  "evaluation": {
+    "microbatch_queries": 4,
+    "selection_every": 1000,
+    "full_epoch_end": true,
+    "monitor_every": 250,
+    "monitor_users": 100,
+    "max_reader_packed_tokens": 65536
+  },
+  "checkpoint": {
+    "first_step": 10,
+    "every": 1000
+  },
+  "seed": 17,
+  "candidate_seed": 17
+}
